@@ -54,7 +54,7 @@
         border: none;
         margin: 5px;
    }
-   .drop-content1, .drop-content2{
+   .drop-content1, .drop-content2, .drop-content3{
     display: none;
     position: absolute;
     z-index: 1;
@@ -92,6 +92,15 @@
     border: none;
     background-color: #f1f1f1;;
    }
+   .drop-content3, #memory{
+     background-color: white;
+     height: 40px;
+     box-shadow: 5px 5px 8px lightgray;
+     font-size: 15px;
+     font-weight: bold;
+     width: 50px;
+     text-align: center;
+    }
    .trigo2{
     font-size: 8px;
    }

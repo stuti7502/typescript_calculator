@@ -1,17 +1,27 @@
 "use strict";
 let x = 0;
-// var display1: any = document.getElementById('display');
 var display1 = document.getElementById("display");
-// var buttons = document.querySelectorAll("button");
+var memory = document.getElementById('memory');
 const buttons = document.querySelectorAll("button");
 var previous = document.getElementById('previous');
+var op = document.getElementsByClassName('op');
 let num = display1 === null || display1 === void 0 ? void 0 : display1.value;
 var mode = "DEG";
+let number = Math.PI;
+let number1 = Math.E;
 buttons.forEach((item) => {
     item.addEventListener('click', (e) => {
         let val = e.target.value;
         let val1 = e.target.value;
         var expression = display1.value;
+        let clearall = document.getElementById('clear');
+        //if there is value on screen then the button will be named as CE else C
+        if (item.id == "clear") {
+            clearall.innerHTML = "C";
+        }
+        else {
+            clearall.innerHTML = "CE";
+        }
         if (val1 == '=') {
             // log function
             const func = expression.split(" ");
@@ -45,14 +55,18 @@ buttons.forEach((item) => {
         else if (val1 == 'rad') {
             display1.value = "";
         }
-        //clear
-        else if (val1 == 'C') {
-            val = "";
-            previous.value = "";
-            display1.value = val;
-        }
         else if (display1.value === "0") {
             display1.value = val;
+        }
+        //checks if there is nothing on the screen then operator should not be displayed
+        else if ((display1 === null || display1 === void 0 ? void 0 : display1.value) === "") {
+            let opr_arr = ["+", "*", "/", "%", "."];
+            if (opr_arr.includes(val)) {
+                display1.value += "";
+            }
+            else {
+                display1.value = val;
+            }
         }
         //operator should not repeat
         else {
@@ -65,6 +79,7 @@ buttons.forEach((item) => {
                 display1.value += val;
             }
         }
+        num = Number(display1 === null || display1 === void 0 ? void 0 : display1.value);
     });
 });
 //function for trigonometry dropdown
@@ -72,39 +87,16 @@ function myFunction1() {
     var drop1 = document.getElementById("drop1");
     drop1.classList.toggle("show");
 }
-// Close the dropdown if the user clicks outside of it
-//     window.onclick = function(event) {
-// 		var val1: any = (event.target as HTMLInputElement).value; 
-//     if (!val1.matches('.btn1')) {
-//         var dropdowns = document.getElementsByClassName("drop-content1");
-//         var j;
-//         for (j = 0; j < dropdowns.length; j++) {
-//         var openDropdown = dropdowns[j];
-//         if (openDropdown.classList.contains('show')) {
-//             openDropdown.classList.remove('show');
-//         }
-//         }
-//     }
-// }
 //function for dropdown of functions
 function myFunction2() {
     var drop2 = document.getElementById("drop2");
     drop2.classList.toggle("show");
 }
-// Close the dropdown if the user clicks outside of it
-// 	window.onclick = function(event){
-// 		var val1: any = (event.target as HTMLInputElement).value;
-// 	if (!val1.matches('.btn2')) {
-// 		var dropdowns = document.getElementsByClassName("drop-content2");
-// 		var i;
-// 		for (i = 0; i < dropdowns.length; i++) {
-// 		var openDropdown = dropdowns[i];
-// 		if (openDropdown.classList.contains('show')) {
-// 			openDropdown.classList.remove('show');
-// 		}
-// 		}
-// 	}
-// }
+//function for memory dropdown
+function myFunction3() {
+    var drop3 = document.getElementById("drop3");
+    drop3.classList.toggle("show");
+}
 //change the button from deg to rad
 function degtorad() {
     var click = document.getElementById("deg");
@@ -217,6 +209,11 @@ function fact() {
         display1.value = fact.toString();
     }
 }
+//clear all
+function clearall() {
+    previous.value = "";
+    display1.value = "";
+}
 //number is plus then convert it to minus and vice versa
 function plusminus() {
     display1.value = (-(display1.value)).toString();
@@ -224,8 +221,7 @@ function plusminus() {
 //square of a number
 function square() {
     previous.value = "square(" + display1.value + ")";
-    display1.value = (num * num);
-    console.log(num);
+    display1.value = (num ** 2).toString();
 }
 //cube of a number
 function cube() {
@@ -245,6 +241,18 @@ function twopowerx() {
 //remove one character at a time
 function backspace() {
     display1.value = display1.value.substr(0, display1.value.length - 1);
+}
+//pi value
+function pi() {
+    // if(display1?.value === "" || parseFloat(display1!.value) == number){
+    display1.value = number;
+    // }
+}
+//value of e
+function evalue() {
+    // if(display1?.value === "" || display1?.value !== null){
+    display1.value = number1;
+    // }
 }
 //ln function
 function ln() {
@@ -385,7 +393,7 @@ function coth() {
 //sinh function
 function sinin() {
     previous.value = "sin-1(" + display1.value + ")";
-    if (parseInt(display1.value) > -1 && parseInt(display1.value) < 1) {
+    if (parseFloat(display1.value) > -1 && parseFloat(display1.value) < 1) {
         display1.value = (Math.asin(num)).toString();
     }
     else {
@@ -431,23 +439,38 @@ function cotin() {
 function mplus() {
     x += eval(display1.value);
     console.log(x);
+    memory.value = x.toString();
     var mc_element = document.getElementById("mc");
     mc_element.classList.add("fontWt");
     mc_element.classList.remove("btnDark");
     var mr_element = document.getElementById("mr");
     mr_element.classList.add("fontWt");
     mr_element.classList.remove("btnDark");
+    var md_element = document.getElementById("btn3");
+    md_element.classList.add("fontWt");
+    md_element.classList.remove("btnDark");
 }
 //M- function removing number from memory
 function mminus() {
     x -= eval(display1.value);
     console.log(x);
+    memory.value = x.toString();
+    var mc_element = document.getElementById("mc");
+    mc_element.classList.add("fontWt");
+    mc_element.classList.remove("btnDark");
+    var mr_element = document.getElementById("mr");
+    mr_element.classList.add("fontWt");
+    mr_element.classList.remove("btnDark");
+    var md_element = document.getElementById("btn3");
+    md_element.classList.add("fontWt");
+    md_element.classList.remove("btnDark");
 }
 //store in memory
 function ms() {
     try {
         x = eval(display1.value);
         console.log(display1.value);
+        memory.value = x.toString();
     }
     catch (error) {
         display1.value = "error";
@@ -458,24 +481,36 @@ function ms() {
     var mr_element = document.getElementById("mr");
     mr_element.classList.add("fontWt");
     mr_element.classList.remove("btnDark");
+    var md_element = document.getElementById("btn3");
+    md_element.classList.add("fontWt");
+    md_element.classList.remove("btnDark");
 }
 //clear from memory
 function mc() {
     console.clear();
     x = 0;
+    memory.value = "";
     var mc_element = document.getElementById("mc");
     mc_element.classList.remove("fontWt");
     mc_element.classList.add("btnDark");
     var mr_element = document.getElementById("mr");
     mr_element.classList.remove("fontWt");
     mr_element.classList.add("btnDark");
+    var md_element = document.getElementById("btn3");
+    md_element.classList.remove("fontWt");
+    md_element.classList.add("btnDark");
 }
 //show record of memory
 function mr() {
     display1.value = x.toString();
 }
 function fe() {
-    display1.value = parseFloat(display1.value).toExponential();
+    if (display1.value == "") {
+        display1.value = "0.e + 0";
+    }
+    else {
+        display1.value = parseFloat(display1.value).toExponential();
+    }
 }
 //exp function
 function exp() {

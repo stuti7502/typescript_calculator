@@ -506,7 +506,7 @@ function mr() {
 }
 function fe() {
     if (display1.value == "") {
-        display1.value = "0.e + 0";
+        display1.value = "0e + 0";
     }
     else {
         display1.value = parseFloat(display1.value).toExponential();

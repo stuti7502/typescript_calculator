@@ -1,6 +1,6 @@
 let x=0;
 var display1: HTMLInputElement | null = document.getElementById("display") as HTMLInputElement | null;
-var memory: HTMLInputElement | null = document.getElementById('memory') as HTMLInputElement | null;
+// var memory: HTMLInputElement | null = document.getElementById('memory') as HTMLInputElement | null;
 const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll("button");
 var previous: HTMLInputElement | null = document.getElementById('previous') as HTMLInputElement | null;
 var op: HTMLElement = document.getElementsByClassName('op') as unknown as HTMLElement;
@@ -11,7 +11,7 @@ let number1 = Math.E
 
 buttons.forEach((item) => {
 	
-	item.addEventListener('click', (e) => {
+	item.addEventListener('click', (e: any) => {
 		let val: string = (e.target as HTMLInputElement).value;
 		let val1: string = (e.target as HTMLInputElement).value; 
 		var expression = display1!.value;
@@ -22,6 +22,9 @@ buttons.forEach((item) => {
 		}
 		else{
 			clearall!.innerHTML = "CE"
+		}
+		if(display1!.value == 'NaN'){
+			display1!.value = 'Error';
 		}
 		
 		if(val1 == '='){
@@ -78,7 +81,9 @@ buttons.forEach((item) => {
 			}
 			else{
 				display1!.value += val;
+				
 			}
+			
 		}
 		num = Number(display1?.value)	
 	}
@@ -209,7 +214,7 @@ function fact(){
 	
 	else {
 		let fact = 1;
-		for (let i = 1; i <= parseInt(display1!.value); i++) {
+		for (let i = 1; i <= parseFloat(display1!.value); i++) {
 			fact *= i;
 		}
 		display1!.value = fact.toString();
@@ -444,70 +449,156 @@ function cotin(){
         display1!.value = (Math.atan(1/num)).toString();
        
 }
+if (localStorage.getItem('memory') != null && document.getElementById('drop3') != null) {
+	var mc_element: any = document.getElementById("mc");
+    mc_element.style.fontWeight ="600";
+	mc_element.style.color ="black";
+    // mc_element.classList.remove("btnDark");
+    var mr_element: any = document.getElementById("mr");
+	mr_element.style.fontWeight ="600";
+	mr_element.style.color ="black";
+    // mr_element.classList.add("fontWt");
+    // mr_element.classList.remove("btnDark");
+	var md_element: any = document.getElementById("btn3");
+	md_element.style.fontWeight ="600";
+	md_element.style.color ="black";
+	// md_element.classList.add("fontWt");
+    // md_element.classList.remove("btnDark");
+} else {
+	var mc_element: any = document.getElementById("mc");
+	mc_element.style.fontWeight ="600";
+	mc_element.style.color ="#999595";
+    // mc_element.classList.remove("fontWt");
+    // mc_element.classList.add("btnDark");
+    var mr_element: any = document.getElementById("mr");
+	mr_element.style.fontWeight ="600";
+	mr_element.style.color ="#999595";
+    // mr_element.classList.remove("fontWt");
+    // mr_element.classList.add("btnDark");
+	var md_element: any = document.getElementById("btn3");
+	md_element.style.fontWeight ="600";
+	md_element.style.color ="#999595";
+    // md_element.classList.remove("fontWt");
+    // md_element.classList.add("btnDark");
+}
 //M+ function adding number memory
 function mplus(){
-	x += eval(display1!.value);
-	console.log(x);
-	memory!.value = x.toString();
-	var mc_element: any = document.getElementById("mc");
-    mc_element.classList.add("fontWt");
-    mc_element.classList.remove("btnDark");
-    var mr_element: any = document.getElementById("mr");
-    mr_element.classList.add("fontWt");
-    mr_element.classList.remove("btnDark");
-	var md_element: any = document.getElementById("btn3");
-	md_element.classList.add("fontWt");
-    md_element.classList.remove("btnDark");
+ 	if (localStorage.getItem('memory') == null) {
+		mem.push(
+    	Number(display1!.value.toString())
+    	);
+    } else {
+		mem[mem.length - 1] += Number(display1!.value)
+    }
+	localStorage.setItem('memory', JSON.stringify(mem));
+	let text = "";
+	for (let i = 0; i < mem.length; i++) {
+	text += mem[i] + "<br>";
+	}
+	document.getElementById('drop3')!.innerHTML = text
+	// var mc_element: any = document.getElementById("mc");
+    // mc_element.classList.add("fontWt");
+    // mc_element.classList.remove("btnDark");
+    // var mr_element: any = document.getElementById("mr");
+    // mr_element.classList.add("fontWt");
+    // mr_element.classList.remove("btnDark");
+	// var md_element: any = document.getElementById("btn3");
+	// md_element.classList.add("fontWt");
+    // md_element.classList.remove("btnDark");
+	
 }
 //M- function removing number from memory
 function mminus(){
-	x -= eval(display1!.value);
-	console.log(x);
-	memory!.value = x.toString();
-	var mc_element: any = document.getElementById("mc");
-    mc_element.classList.add("fontWt");
-    mc_element.classList.remove("btnDark");
-    var mr_element: any = document.getElementById("mr");
-    mr_element.classList.add("fontWt");
-    mr_element.classList.remove("btnDark");
-	var md_element: any = document.getElementById("btn3");
-	md_element.classList.add("fontWt");
-    md_element.classList.remove("btnDark");
+ 	if (localStorage.getItem('memory') == null) {
+		mem.push(
+    	Number(display1!.value.toString())
+    	);
+    } else {
+		mem[mem.length - 1] -= Number(display1!.value)
+    }
+	localStorage.setItem('memory', JSON.stringify(mem));
+	let text = "";
+	for (let i = 0; i < mem.length; i++) {
+	text += mem[i] + "<br>";
+	}
+	document.getElementById('drop3')!.innerHTML = text
+	localStorage.setItem('memory', JSON.stringify(mem));
+	// var mc_element: any = document.getElementById("mc");
+    // mc_element.classList.add("fontWt");
+    // mc_element.classList.remove("btnDark");
+    // var mr_element: any = document.getElementById("mr");
+    // mr_element.classList.add("fontWt");
+    // mr_element.classList.remove("btnDark");
+	// var md_element: any = document.getElementById("btn3");
+	// md_element.classList.add("fontWt");
+    // md_element.classList.remove("btnDark");
+	
 }
+var mem: any;
 //store in memory
 function ms(){
-	try{
-		x = eval(display1!.value);
-		console.log(display1!.value);
-		memory!.value = x.toString();
-	}
-	catch(error){
-		display1!.value = "error";
-	}
-	var mc_element: any = document.getElementById("mc");
-    mc_element.classList.add("fontWt");
-    mc_element.classList.remove("btnDark");
-    var mr_element: any = document.getElementById("mr");
-    mr_element.classList.add("fontWt");
-    mr_element.classList.remove("btnDark");
-	var md_element: any = document.getElementById("btn3");
-    md_element.classList.add("fontWt");
-    md_element.classList.remove("btnDark");
+  document.getElementById('drop3')!.innerHTML = "";
+  if (localStorage.getItem('memory') == null) {
+    mem = [];
+  } else {
+    mem = JSON.parse(localStorage.getItem('memory')!);
+	
+  }
+  
+  mem.push(
+    Number(display1!.value.toString())
+    
+  );
+  
+  localStorage.setItem('memory', JSON.stringify(mem));
+
+let text = "";
+for (let i = 0; i < mem.length; i++) {
+  text += mem[i] + "<br>";
+}
+document.getElementById('drop3')!.innerHTML = text
+
+	// var mc_element: any = document.getElementById("mc");
+    // mc_element.classList.add("fontWt");
+    // mc_element.classList.remove("btnDark");
+    // var mr_element: any = document.getElementById("mr");
+    // mr_element.classList.add("fontWt");
+    // mr_element.classList.remove("btnDark");
+	// var md_element: any = document.getElementById("btn3");
+    // md_element.classList.add("fontWt");
+    // md_element.classList.remove("btnDark");
+	
+};
+viewmemory();	  
+function viewmemory(){
+	if (localStorage.getItem('memory') == null) {
+		mem = [];
+	  } else {
+		mem = JSON.parse(localStorage.getItem('memory')!);
+	  }
+
+	  let text = "";
+	  for (let i = 0; i < mem.length; i++) {
+		text += mem[i] + "<br>";
+	  }
+	  document.getElementById('drop3')!.innerHTML = text
 }
 //clear from memory
 function mc(){
-	console.clear();
-	x=0;
-	memory!.value = "";
-	var mc_element: any = document.getElementById("mc");
-    mc_element.classList.remove("fontWt");
-    mc_element.classList.add("btnDark");
-    var mr_element: any = document.getElementById("mr");
-    mr_element.classList.remove("fontWt");
-    mr_element.classList.add("btnDark");
-	var md_element: any = document.getElementById("btn3");
-    md_element.classList.remove("fontWt");
-    md_element.classList.add("btnDark");
+	localStorage.removeItem('memory');
+	// console.clear();
+	// x=0;
+	document.getElementById('drop3')!.innerHTML = '';
+	// var mc_element: any = document.getElementById("mc");
+    // mc_element.classList.remove("fontWt");
+    // mc_element.classList.add("btnDark");
+    // var mr_element: any = document.getElementById("mr");
+    // mr_element.classList.remove("fontWt");
+    // mr_element.classList.add("btnDark");
+	// var md_element: any = document.getElementById("btn3");
+    // md_element.classList.remove("fontWt");
+    // md_element.classList.add("btnDark");
+	
 }
 //show record of memory
 function mr(){

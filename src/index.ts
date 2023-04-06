@@ -1,16 +1,9 @@
 let x = 0;
-var display1: HTMLInputElement | null = document.getElementById(
-  "display"
-) as HTMLInputElement | null;
+var display1: HTMLInputElement | null = document.getElementById("display") as HTMLInputElement | null;
 // var memory: HTMLInputElement | null = document.getElementById('memory') as HTMLInputElement | null;
-const buttons: NodeListOf<HTMLButtonElement> =
-  document.querySelectorAll("button");
-var previous: HTMLInputElement | null = document.getElementById(
-  "previous"
-) as HTMLInputElement | null;
-var op: HTMLElement = document.getElementsByClassName(
-  "op"
-) as unknown as HTMLElement;
+const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll("button");
+var previous: HTMLInputElement | null = document.getElementById("previous") as HTMLInputElement | null;
+var op: HTMLElement = document.getElementsByClassName("op") as unknown as HTMLElement;
 let num: number = display1?.value as unknown as number;
 var mode = "DEG";
 let number = Math.PI;
@@ -34,7 +27,7 @@ buttons.forEach((item) => {
     if (display1!.value == "NaN") {
       display1!.value = "Error";
     }
-
+	if (e.target.value == undefined) return;
     if (val1 == "=") {
       // log function
       const func = expression.split(" ");
@@ -76,6 +69,7 @@ buttons.forEach((item) => {
     }
     //operator should not repeat
     else {
+      
       let lastChar = display1!.value.charAt(display1!.value.length - 1);
       let op: any = ["+", "-", "*", "/", "%", "."];
       if (op.includes(val) && op.includes(lastChar)) {
@@ -83,6 +77,7 @@ buttons.forEach((item) => {
       } else {
         display1!.value += val;
       }
+
     }
     num = Number(display1?.value);
   });
@@ -125,6 +120,7 @@ function change() {
   const col1: any = document.getElementsByClassName("option1");
   const col2: any = document.getElementsByClassName("option2");
   if (col2[0].style.display === "inline-block") {
+	document.getElementById('second')!.style.background = '#f7f7f7'
     for (let i = 0; i < 6; i++) {
       col1[i].style.display = "inline-block";
     }
@@ -132,6 +128,7 @@ function change() {
       col2[i].style.display = "none";
     }
   } else {
+	document.getElementById('second')!.style.background = '#92c2e8'
     for (let i = 0; i < 6; i++) {
       col2[i].style.display = "inline-block";
     }
@@ -149,7 +146,9 @@ function inverse() {
   if (
     trigon2[0].style.display === "none" &&
     trigon1[0].style.display === "inline"
-  ) {
+  ) 
+  	{
+	document.getElementById('secondtrigo')!.style.background = '#92c2e8'
     for (let i = 0; i < 6; i++) {
       trigon2[i].style.display = "inline";
     }
@@ -160,6 +159,7 @@ function inverse() {
       trigon3[i].style.display = "none";
     }
   } else {
+	document.getElementById('secondtrigo')!.style.background = '#f7f7f7'
     for (let i = 0; i < 6; i++) {
       trigon1[i].style.display = "inline";
     }
@@ -181,6 +181,7 @@ function hyp() {
     trigon3[0].style.display === "none" &&
     trigon1[0].style.display === "inline"
   ) {
+	document.getElementById('secondhyp')!.style.background = '#92c2e8'
     for (let i = 0; i < 6; i++) {
       trigon3[i].style.display = "inline";
     }
@@ -191,6 +192,7 @@ function hyp() {
       trigon2[i].style.display = "none";
     }
   } else {
+	document.getElementById('secondhyp')!.style.background = '#f7f7f7'
     for (let i = 0; i < 6; i++) {
       trigon1[i].style.display = "inline";
     }
@@ -207,7 +209,7 @@ function hyp() {
 function fact() {
   previous!.value = "fact(" + display1!.value + ")";
   if (display1!.value < "0") {
-    display1!.value = "Error!";
+    display1!.value = "Error";
   } else if (display1!.value === "0") {
     display1!.value = "1";
   } else {
@@ -249,7 +251,11 @@ function twopowerx() {
 }
 //remove one character at a time
 function backspace() {
-  display1!.value = display1!.value.substr(0, display1!.value.length - 1);
+	if(display1!.value == 'Error' || display1!.value == 'Infinity' || display1!.value == 'Undefined' || display1!.value == 'Invalid input'){
+		display1!.value = ''
+	}else{
+  		display1!.value = display1!.value.substr(0, display1!.value.length - 1);
+	}
 }
 
 //pi value
@@ -475,7 +481,7 @@ function mplus() {
   localStorage.setItem("memory", JSON.stringify(mem));
   let text = "";
   for (let i = 0; i < mem.length; i++) {
-    text += mem[i] + "<br>";
+    text += mem[i] + "<br><br>";
   }
   document.getElementById("drop3")!.innerHTML = text;
   memoryBtncolor();
@@ -496,7 +502,7 @@ function mminus() {
   localStorage.setItem("memory", JSON.stringify(mem));
   let text = "";
   for (let i = 0; i < mem.length; i++) {
-    text += mem[i] + "<br>";
+    text += mem[i] + "<br><br>";
   }
   document.getElementById("drop3")!.innerHTML = text;
   localStorage.setItem("memory", JSON.stringify(mem));
@@ -518,7 +524,7 @@ function ms() {
 
   let text = "";
   for (let i = 0; i < mem.length; i++) {
-    text += mem[i] + "<br>";
+    text += mem[i] + "<br><br>";
   }
   document.getElementById("drop3")!.innerHTML = text;
 
@@ -534,7 +540,7 @@ function viewmemory() {
 
   let text = "";
   for (let i = 0; i < mem.length; i++) {
-    text += mem[i] + "<br>";
+    text += mem[i] + "<br><br>";
   }
   document.getElementById("drop3")!.innerHTML = text;
 }

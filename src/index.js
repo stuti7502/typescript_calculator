@@ -3,18 +3,19 @@ let x = 0;
 var display1 = document.getElementById("display");
 // var memory: HTMLInputElement | null = document.getElementById('memory') as HTMLInputElement | null;
 const buttons = document.querySelectorAll("button");
-var previous = document.getElementById('previous');
-var op = document.getElementsByClassName('op');
+var previous = document.getElementById("previous");
+var op = document.getElementsByClassName("op");
 let num = display1 === null || display1 === void 0 ? void 0 : display1.value;
 var mode = "DEG";
 let number = Math.PI;
 let number1 = Math.E;
+memoryBtncolor();
 buttons.forEach((item) => {
-    item.addEventListener('click', (e) => {
+    item.addEventListener("click", (e) => {
         let val = e.target.value;
         let val1 = e.target.value;
         var expression = display1.value;
-        let clearall = document.getElementById('clear');
+        let clearall = document.getElementById("clear");
         //if there is value on screen then the button will be named as CE else C
         if (item.id == "clear") {
             clearall.innerHTML = "C";
@@ -22,10 +23,10 @@ buttons.forEach((item) => {
         else {
             clearall.innerHTML = "CE";
         }
-        if (display1.value == 'NaN') {
-            display1.value = 'Error';
+        if (display1.value == "NaN") {
+            display1.value = "Error";
         }
-        if (val1 == '=') {
+        if (val1 == "=") {
             // log function
             const func = expression.split(" ");
             var a = func[0];
@@ -34,7 +35,7 @@ buttons.forEach((item) => {
                 var c = Math.log(a);
                 var d = Math.log(b);
                 if (c === 0 && d === 0) {
-                    display1.value = '0';
+                    display1.value = "0";
                 }
                 else {
                     previous.value = display1.value;
@@ -44,7 +45,7 @@ buttons.forEach((item) => {
             }
             else if (func[1] === "root") {
                 previous.value = display1.value;
-                display1.value = (Math.pow(a, 1 / b)).toString();
+                display1.value = Math.pow(a, 1 / b).toString();
             }
             else {
                 previous.value = display1.value;
@@ -52,10 +53,10 @@ buttons.forEach((item) => {
                 display1.value = val;
             }
         }
-        else if (val1 == 'deg') {
+        else if (val1 == "deg") {
             display1.value = "";
         }
-        else if (val1 == 'rad') {
+        else if (val1 == "rad") {
             display1.value = "";
         }
         else if (display1.value === "0") {
@@ -136,13 +137,13 @@ function change() {
         }
     }
 }
-;
 //on clicking second inside of trigo
 function inverse() {
-    var trigon1 = document.getElementsByClassName('trigo1');
-    var trigon2 = document.getElementsByClassName('trigo2');
-    var trigon3 = document.getElementsByClassName('trigo3');
-    if (trigon2[0].style.display === "none" && trigon1[0].style.display === "inline") {
+    var trigon1 = document.getElementsByClassName("trigo1");
+    var trigon2 = document.getElementsByClassName("trigo2");
+    var trigon3 = document.getElementsByClassName("trigo3");
+    if (trigon2[0].style.display === "none" &&
+        trigon1[0].style.display === "inline") {
         for (let i = 0; i < 6; i++) {
             trigon2[i].style.display = "inline";
         }
@@ -165,13 +166,13 @@ function inverse() {
         }
     }
 }
-;
 //on clicking hyp inside of trigo
 function hyp() {
-    var trigon1 = document.getElementsByClassName('trigo1');
-    var trigon2 = document.getElementsByClassName('trigo2');
-    var trigon3 = document.getElementsByClassName('trigo3');
-    if (trigon3[0].style.display === "none" && trigon1[0].style.display === "inline") {
+    var trigon1 = document.getElementsByClassName("trigo1");
+    var trigon2 = document.getElementsByClassName("trigo2");
+    var trigon3 = document.getElementsByClassName("trigo3");
+    if (trigon3[0].style.display === "none" &&
+        trigon1[0].style.display === "inline") {
         for (let i = 0; i < 6; i++) {
             trigon3[i].style.display = "inline";
         }
@@ -194,14 +195,13 @@ function hyp() {
         }
     }
 }
-;
-//find factorial 
+//find factorial
 function fact() {
     previous.value = "fact(" + display1.value + ")";
-    if (display1.value < '0') {
+    if (display1.value < "0") {
         display1.value = "Error!";
     }
-    else if (display1.value === '0') {
+    else if (display1.value === "0") {
         display1.value = "1";
     }
     else {
@@ -219,7 +219,7 @@ function clearall() {
 }
 //number is plus then convert it to minus and vice versa
 function plusminus() {
-    display1.value = (-(display1.value)).toString();
+    display1.value = (-display1.value).toString();
 }
 //square of a number
 function square() {
@@ -260,24 +260,24 @@ function evalue() {
 //ln function
 function ln() {
     previous.value = "ln(" + display1.value + ")";
-    display1.value = (Math.log(num)).toString();
+    display1.value = Math.log(num).toString();
 }
 //log function
 function log() {
     previous.value = "log(" + display1.value + ")";
-    display1.value = (Math.log10(num)).toString();
+    display1.value = Math.log10(num).toString();
 }
 //square root of a number
 function sqroot() {
     previous.value = "squareroot(" + display1.value + ")";
-    display1.value = (Math.sqrt(num)).toString();
+    display1.value = Math.sqrt(num).toString();
 }
 //cube root of a number
 function cbroot() {
     previous.value = "cuberoot(" + display1.value + ")";
-    display1.value = (Math.cbrt(num)).toString();
+    display1.value = Math.cbrt(num).toString();
 }
-//one divide by x 
+//one divide by x
 function onebyx() {
     previous.value = "1/" + display1.value;
     display1.value = (1 / num).toString();
@@ -285,49 +285,49 @@ function onebyx() {
 //convert any number to positive
 function abs() {
     previous.value = "abs(" + display1.value + ")";
-    display1.value = (Math.abs(num)).toString();
+    display1.value = Math.abs(num).toString();
 }
 //next nearest integer
 function floor() {
     previous.value = "floor(" + display1.value + ")";
-    display1.value = (Math.floor(num)).toString();
+    display1.value = Math.floor(num).toString();
 }
 //previous nearest integer
 function ceil() {
     previous.value = "ceil(" + display1.value + ")";
-    display1.value = (Math.ceil(num)).toString();
+    display1.value = Math.ceil(num).toString();
 }
 //sin function
 function sin() {
     if (mode == "RAD") {
         previous.value = "sin(" + display1.value + ")";
-        display1.value = (Math.sin(num)).toString();
+        display1.value = Math.sin(num).toString();
     }
     else {
         previous.value = "sin(" + display1.value + ")";
-        display1.value = (Math.sin(num * (Math.PI / 180))).toString();
+        display1.value = Math.sin(num * (Math.PI / 180)).toString();
     }
 }
 //cos function
 function cos() {
     if (mode == "RAD") {
         previous.value = "cos(" + display1.value + ")";
-        display1.value = (Math.cos(num)).toString();
+        display1.value = Math.cos(num).toString();
     }
     else {
         previous.value = "cos(" + display1.value + ")";
-        display1.value = (Math.cos(num * (Math.PI / 180))).toString();
+        display1.value = Math.cos(num * (Math.PI / 180)).toString();
     }
 }
 //tan function
 function tan() {
     if (mode == "RAD") {
         previous.value = "tan(" + display1.value + ")";
-        display1.value = (Math.tan(num)).toString();
+        display1.value = Math.tan(num).toString();
     }
     else {
         previous.value = "tan(" + display1.value + ")";
-        display1.value = (Math.tan(num * (Math.PI / 180))).toString();
+        display1.value = Math.tan(num * (Math.PI / 180)).toString();
     }
 }
 //sec function
@@ -366,17 +366,17 @@ function cot() {
 //sinh function
 function sinh() {
     previous.value = "sinh(" + display1.value + ")";
-    display1.value = (Math.sinh(num)).toString();
+    display1.value = Math.sinh(num).toString();
 }
 //cosh function
 function cosh() {
     previous.value = "cosh(" + display1.value + ")";
-    display1.value = (Math.cosh(num)).toString();
+    display1.value = Math.cosh(num).toString();
 }
 //tanh function
 function tanh() {
     previous.value = "tanh(" + display1.value + ")";
-    display1.value = (Math.tanh(num)).toString();
+    display1.value = Math.tanh(num).toString();
 }
 //sech function
 function sech() {
@@ -397,7 +397,7 @@ function coth() {
 function sinin() {
     previous.value = "sin-1(" + display1.value + ")";
     if (parseFloat(display1.value) > -1 && parseFloat(display1.value) < 1) {
-        display1.value = (Math.asin(num)).toString();
+        display1.value = Math.asin(num).toString();
     }
     else {
         display1.value = "Invalid input";
@@ -407,7 +407,7 @@ function sinin() {
 function cosin() {
     previous.value = "cos-1(" + display1.value + ")";
     if (parseFloat(display1.value) > -1 && parseFloat(display1.value) < 1) {
-        display1.value = (Math.acos(num)).toString();
+        display1.value = Math.acos(num).toString();
     }
     else {
         display1.value = "Invalid input";
@@ -417,7 +417,7 @@ function cosin() {
 function tanin() {
     previous.value = "tan-1(" + display1.value + ")";
     if (parseFloat(display1.value) > -1 && parseFloat(display1.value) < 1) {
-        display1.value = (Math.atan(num)).toString();
+        display1.value = Math.atan(num).toString();
     }
     else {
         display1.value = "Invalid input";
@@ -426,161 +426,132 @@ function tanin() {
 //sec inverse function
 function secin() {
     previous.value = "sec-1(" + display1.value + ")";
-    display1.value = (Math.acos(1 / num)).toString();
+    display1.value = Math.acos(1 / num).toString();
 }
 //cosec inverse function
 function cosecin() {
     previous.value = "cosec-1(" + display1.value + ")";
-    display1.value = (Math.asin(1 / num)).toString();
+    display1.value = Math.asin(1 / num).toString();
 }
 //cot inverse function
 function cotin() {
     previous.value = "cot-1(" + display1.value + ")";
-    display1.value = (Math.atan(1 / num)).toString();
+    display1.value = Math.atan(1 / num).toString();
 }
-if (localStorage.getItem('memory') != null && document.getElementById('drop3') != null) {
-    var mc_element = document.getElementById("mc");
-    mc_element.style.fontWeight = "600";
-    mc_element.style.color = "black";
-    // mc_element.classList.remove("btnDark");
-    var mr_element = document.getElementById("mr");
-    mr_element.style.fontWeight = "600";
-    mr_element.style.color = "black";
-    // mr_element.classList.add("fontWt");
-    // mr_element.classList.remove("btnDark");
-    var md_element = document.getElementById("btn3");
-    md_element.style.fontWeight = "600";
-    md_element.style.color = "black";
-    // md_element.classList.add("fontWt");
-    // md_element.classList.remove("btnDark");
-}
-else {
-    var mc_element = document.getElementById("mc");
-    mc_element.style.fontWeight = "600";
-    mc_element.style.color = "#999595";
-    // mc_element.classList.remove("fontWt");
-    // mc_element.classList.add("btnDark");
-    var mr_element = document.getElementById("mr");
-    mr_element.style.fontWeight = "600";
-    mr_element.style.color = "#999595";
-    // mr_element.classList.remove("fontWt");
-    // mr_element.classList.add("btnDark");
-    var md_element = document.getElementById("btn3");
-    md_element.style.fontWeight = "600";
-    md_element.style.color = "#999595";
-    // md_element.classList.remove("fontWt");
-    // md_element.classList.add("btnDark");
+///
+function memoryBtncolor() {
+    if (localStorage.getItem("memory") != null &&
+        document.getElementById("drop3") != null) {
+        var mc_element = document.getElementById("mc");
+        mc_element.style.color = "black";
+        var mr_element = document.getElementById("mr");
+        mr_element.style.color = "black";
+        var md_element = document.getElementById("btn3");
+        md_element.style.color = "black";
+    }
+    else {
+        var mc_element = document.getElementById("mc");
+        mc_element.style.color = "#999595";
+        var mr_element = document.getElementById("mr");
+        mr_element.style.color = "#999595";
+        var md_element = document.getElementById("btn3");
+        md_element.style.color = "#999595";
+    }
 }
 //M+ function adding number memory
 function mplus() {
-    if (localStorage.getItem('memory') == null) {
+    document.getElementById("drop3").innerHTML = "";
+    if (localStorage.getItem("memory") == null) {
+        mem = [];
+    }
+    else {
+        mem = JSON.parse(localStorage.getItem("memory"));
+    }
+    if (localStorage.getItem("memory") == null) {
         mem.push(Number(display1.value.toString()));
     }
     else {
         mem[mem.length - 1] += Number(display1.value);
     }
-    localStorage.setItem('memory', JSON.stringify(mem));
+    localStorage.setItem("memory", JSON.stringify(mem));
     let text = "";
     for (let i = 0; i < mem.length; i++) {
         text += mem[i] + "<br>";
     }
-    document.getElementById('drop3').innerHTML = text;
-    // var mc_element: any = document.getElementById("mc");
-    // mc_element.classList.add("fontWt");
-    // mc_element.classList.remove("btnDark");
-    // var mr_element: any = document.getElementById("mr");
-    // mr_element.classList.add("fontWt");
-    // mr_element.classList.remove("btnDark");
-    // var md_element: any = document.getElementById("btn3");
-    // md_element.classList.add("fontWt");
-    // md_element.classList.remove("btnDark");
+    document.getElementById("drop3").innerHTML = text;
+    memoryBtncolor();
 }
 //M- function removing number from memory
 function mminus() {
-    if (localStorage.getItem('memory') == null) {
-        mem.push(Number(display1.value.toString()));
+    document.getElementById("drop3").innerHTML = "";
+    if (localStorage.getItem("memory") == null) {
+        mem = [];
+    }
+    else {
+        mem = JSON.parse(localStorage.getItem("memory"));
+    }
+    if (localStorage.getItem("memory") == null) {
+        mem.push(Number(-display1.value.toString()));
     }
     else {
         mem[mem.length - 1] -= Number(display1.value);
     }
-    localStorage.setItem('memory', JSON.stringify(mem));
+    localStorage.setItem("memory", JSON.stringify(mem));
     let text = "";
     for (let i = 0; i < mem.length; i++) {
         text += mem[i] + "<br>";
     }
-    document.getElementById('drop3').innerHTML = text;
-    localStorage.setItem('memory', JSON.stringify(mem));
-    // var mc_element: any = document.getElementById("mc");
-    // mc_element.classList.add("fontWt");
-    // mc_element.classList.remove("btnDark");
-    // var mr_element: any = document.getElementById("mr");
-    // mr_element.classList.add("fontWt");
-    // mr_element.classList.remove("btnDark");
-    // var md_element: any = document.getElementById("btn3");
-    // md_element.classList.add("fontWt");
-    // md_element.classList.remove("btnDark");
+    document.getElementById("drop3").innerHTML = text;
+    localStorage.setItem("memory", JSON.stringify(mem));
+    memoryBtncolor();
 }
 var mem;
 //store in memory
 function ms() {
-    document.getElementById('drop3').innerHTML = "";
-    if (localStorage.getItem('memory') == null) {
+    document.getElementById("drop3").innerHTML = "";
+    if (localStorage.getItem("memory") == null) {
         mem = [];
     }
     else {
-        mem = JSON.parse(localStorage.getItem('memory'));
+        mem = JSON.parse(localStorage.getItem("memory"));
     }
     mem.push(Number(display1.value.toString()));
-    localStorage.setItem('memory', JSON.stringify(mem));
+    localStorage.setItem("memory", JSON.stringify(mem));
     let text = "";
     for (let i = 0; i < mem.length; i++) {
         text += mem[i] + "<br>";
     }
-    document.getElementById('drop3').innerHTML = text;
-    // var mc_element: any = document.getElementById("mc");
-    // mc_element.classList.add("fontWt");
-    // mc_element.classList.remove("btnDark");
-    // var mr_element: any = document.getElementById("mr");
-    // mr_element.classList.add("fontWt");
-    // mr_element.classList.remove("btnDark");
-    // var md_element: any = document.getElementById("btn3");
-    // md_element.classList.add("fontWt");
-    // md_element.classList.remove("btnDark");
+    document.getElementById("drop3").innerHTML = text;
+    memoryBtncolor();
 }
-;
 viewmemory();
 function viewmemory() {
-    if (localStorage.getItem('memory') == null) {
+    if (localStorage.getItem("memory") == null) {
         mem = [];
     }
     else {
-        mem = JSON.parse(localStorage.getItem('memory'));
+        mem = JSON.parse(localStorage.getItem("memory"));
     }
     let text = "";
     for (let i = 0; i < mem.length; i++) {
         text += mem[i] + "<br>";
     }
-    document.getElementById('drop3').innerHTML = text;
+    document.getElementById("drop3").innerHTML = text;
 }
 //clear from memory
 function mc() {
-    localStorage.removeItem('memory');
-    // console.clear();
-    // x=0;
-    document.getElementById('drop3').innerHTML = '';
-    // var mc_element: any = document.getElementById("mc");
-    // mc_element.classList.remove("fontWt");
-    // mc_element.classList.add("btnDark");
-    // var mr_element: any = document.getElementById("mr");
-    // mr_element.classList.remove("fontWt");
-    // mr_element.classList.add("btnDark");
-    // var md_element: any = document.getElementById("btn3");
-    // md_element.classList.remove("fontWt");
-    // md_element.classList.add("btnDark");
+    localStorage.removeItem("memory");
+    document.getElementById("drop3").innerHTML = "";
+    var mc_element = document.getElementById("mc");
+    mc_element.style.color = "#999595";
+    var mr_element = document.getElementById("mr");
+    mr_element.style.color = "#999595";
+    var md_element = document.getElementById("btn3");
+    md_element.style.color = "#999595";
 }
 //show record of memory
 function mr() {
-    display1.value = x.toString();
+    display1.value = mem[mem.length - 1];
 }
 function fe() {
     if (display1.value == "") {
@@ -605,9 +576,10 @@ function exp() {
 function ConvertDDToDMS() {
     previous.value = "dms(" + display1.value + ")";
     var degree = Math.floor(num);
-    var minutes = ((num - Math.floor(num)) * 60.0);
+    var minutes = (num - Math.floor(num)) * 60.0;
     var seconds = (minutes - Math.floor(minutes)) * 60.0;
-    display1.value = degree + ":" + Math.floor(minutes) + ":" + seconds.toFixed(2);
+    display1.value =
+        degree + ":" + Math.floor(minutes) + ":" + seconds.toFixed(2);
 }
 function deg() {
     previous.value = "degrees(" + display1.value + ")";
@@ -615,5 +587,5 @@ function deg() {
 }
 //random number form 0-1
 function rand() {
-    display1.value = (Math.random()).toString();
+    display1.value = Math.random().toString();
 }

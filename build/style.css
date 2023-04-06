@@ -1,119 +1,142 @@
-.buttons3{
-    width: 58px;
-    height: 40px;
-    font-size: 16px;
-    margin: 0.8px;
-    border: none;
-    background-color: #f7f7f7;
-    text-align: center;
-   }
-   td{
-    text-align: center;
-   }
-   .option1{
-    width: 58px;
-    height: 40px;
-    background-color: #f7f7f7;
-    border: none;
-   }
-   .option2{
-    width: 58px;
-    height: 40px;
-    background-color: #f7f7f7;
-    border: none;
-   }
-   button:hover{
-    background-color: #d4d4d4;
-   }
-   .buttons3 input{
-    background-color: #f7f7f7;
-    font-size: 15px;
-   }
-   .buttons1{
-        width: 58px;
-        height: 40px;
-        font-size: 14px;
-        margin: 0.8px;
-        border: none;
-   }
-   
-   .main{
-        background-color: #f1f1f1;
-        width: 320px;
-        margin: auto;
-        box-shadow: 8px 8px 8px lightgray;
-        margin-top: 8%;
-   }
-   .dispaly{
-    height: 400px;
-    padding: 50px;
+.buttons3 {
+     width: 58px;
+     height: 40px;
+     font-size: 16px;
+     margin: 0.8px;
+     border: none;
+     background-color: #f7f7f7;
+     text-align: center;
+}
 
-   }
-   
-   .buttons2 button{
-        border: none;
-        margin: 5px;
-   }
-   .drop-content1, .drop-content2, .drop-content3{
-    display: none;
-    position: absolute;
-    z-index: 1;
-   }
-   .show{
-    display: block;
-   }
-   .btn1, .btn2{
-    cursor: pointer;
-   }
-   .drop-content1 button, .drop-content2 button{
-    width: 58px;
-    height: 40px;
-    font-size: 14px;
-    margin: 0.5px;
-    border: none;
-    background-color: #f7f7f7;
-   }
-   .drop-content1{
-    background-color: #d4d4d4;
-    width: 254px;
-    height: 85px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 8px lightgray;
-    /* padding-left: 3px; */
-   }
-   .drop-content2{
-    background-color: #d4d4d4;
-    width: 190px;
-    height: 85px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 8px lightgray;
-   }
-   input{
-    border: none;
-    background-color: #f1f1f1;;
-   }
-   .drop-content3, #memory{
+td {
+     text-align: center;
+}
+
+.option1 {
+     width: 58px;
+     height: 40px;
+     background-color: #f7f7f7;
+     border: none;
+}
+
+.option2 {
+     width: 58px;
+     height: 40px;
+     background-color: #f7f7f7;
+     border: none;
+}
+
+button:hover {
+     background-color: #d4d4d4;
+}
+
+.buttons3 input {
+     background-color: #f7f7f7;
+     font-size: 15px;
+}
+
+.buttons1 {
+     width: 58px;
+     height: 40px;
+     font-size: 14px;
+     margin: 0.8px;
+     border: none;
+}
+
+.main {
+     background-color: #f1f1f1;
+     width: 320px;
+     margin: auto;
+     box-shadow: 8px 8px 8px lightgray;
+     margin-top: 8%;
+}
+
+.dispaly {
+     height: 400px;
+     padding: 50px;
+
+}
+
+.buttons2 button {
+     border: none;
+     margin: 5px;
+}
+
+.drop-content1,
+.drop-content2,
+.drop-content3 {
+     display: none;
+     position: absolute;
+     z-index: 1;
+}
+
+.show {
+     display: block;
+}
+
+.btn1,
+.btn2 {
+     cursor: pointer;
+}
+
+.drop-content1 button,
+.drop-content2 button {
+     width: 58px;
+     height: 40px;
+     font-size: 14px;
+     margin: 0.5px;
+     border: none;
+     background-color: #f7f7f7;
+}
+
+.drop-content1 {
+     background-color: #d4d4d4;
+     width: 254px;
+     height: 85px;
+     border-radius: 5px;
+     box-shadow: 5px 5px 8px lightgray;
+     /* padding-left: 3px; */
+}
+
+.drop-content2 {
+     background-color: #d4d4d4;
+     width: 190px;
+     height: 85px;
+     border-radius: 5px;
+     box-shadow: 5px 5px 8px lightgray;
+}
+
+input {
+     border: none;
+     background-color: #f1f1f1;
+     ;
+}
+
+.drop-content3,
+#memory {
      background-color: white;
-     /* height: 40px; */
      box-shadow: 5px 5px 8px lightgray;
      font-size: 15px;
      font-weight: bold;
-     width: 50px;
+     width: 70px;
+     padding: 10px;
      text-align: center;
-    }
-   .trigo2{
-    font-size: 8px;
-   }
-   button{
-    border-radius: 5px;
-    cursor: pointer;
-   }
-   .fontWt{
-    font-weight: 600;
 }
 
-.btnDark{
-    color : #999595;
-    font-weight: 600;
+.trigo2 {
+     font-size: 8px;
 }
 
+button {
+     border-radius: 5px;
+     cursor: pointer;
+}
+
+.fontWt {
+     font-weight: 600;
+}
+
+.btnDark {
+     color: #999595;
+     font-weight: 600;
+}
